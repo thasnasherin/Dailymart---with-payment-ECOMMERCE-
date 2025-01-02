@@ -1,0 +1,48 @@
+{% extends 'adminindex.html' %}
+{% block contents %}
+<div class="card">
+    <div class="card-header">
+        <h2 class="text-center">Orders</h2>
+      <div class="card-tools"></div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body table-responsive p-0">
+      <table class="table table-hover text-nowrap">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>User Name</th>
+            <th>User Number</th>
+            <th>User Place</th>
+            <th>Full Adress</th>
+            <th>User Email</th>
+            <th>Order Image</th>
+            <th>Order Name</th>
+            <th>Order Price</th>
+
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in data %}
+          <tr>
+            <td>{{i.id}}</td>
+            <td>{{i.usercart.usercart.name}}</td>
+            <td>{{i.usercart.usercart.phone}}</td>
+            <td>{{i.usercart.usercart.place}}</td>
+            <td>{{i.adress}}</td>
+            <td>{{i.usercart.usercart.email}}</td>
+            <td><img src="{{i.usercart.userpro.product_image.url}}" alt="" srcset="" height="50" width="50"></td>
+            <td>{{i.usercart.userpro.product_name}}</td>
+            <td>{{i.usercart.total}}</td>
+            <!-- <td><a href="" class="btn btn-danger" >Decline</a></td>
+            <td><a href="" class="btn btn-primary" >Accept</a></td> -->
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <!-- /.card-body -->
+  </div>
+{% endblock %}

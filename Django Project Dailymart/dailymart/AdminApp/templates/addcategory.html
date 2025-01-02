@@ -1,0 +1,31 @@
+{% extends 'adminindex.html' %}
+{% block contents %}
+<div class="container d-flex justify-content-center  full-height" style="height: 100vh;">
+    <div class="row w-100 ">
+        <div class="col-md-6 offset-md-3 mt-5">
+          <div class="card">
+            <div class="card-header bg-primary text-white">Add New Category</div>
+            <div class="card-body">
+              <form action="{% url 'addcat' %}" enctype="multipart/form-data" method="POST">
+                  {% csrf_token %}
+                <div class="form-group">
+                  <label for="categoryname">Category Name</label>
+                  <input type="text" class="form-control" id="categoryname" placeholder="Enter category name" required name="cat_name" >
+                </div>
+                <div class="form-group">
+                  <label for="categorydesc">Category Description</label>
+                  <input type="text" class="form-control" id="categorydesc" placeholder="Enter category description" required name="cat_desc">
+                </div>
+                <div class="form-group">
+                  <label for="categoryimage">Image</label>
+                  <input type="file" class="form-control-file" id="categoryimage" required name="cat_img">
+                </div>
+               
+                <button type="submit" class="btn btn-primary btn-block">Add Category</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}

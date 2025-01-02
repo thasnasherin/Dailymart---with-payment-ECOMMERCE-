@@ -1,0 +1,36 @@
+{% extends 'userindex.html' %}
+{% block contents %}
+<div class="breadcrumb-section" style="background-color: #051922;" >
+    <div class="container" >
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="breadcrumb-text">
+                    <h1>Profile</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="container" style="max-width: 600px; margin-top: 50px;">
+    <div class="card">
+        <div class="card-header text-center">
+            <h2>Profile</h2>
+        </div>
+        <div class="card-body">
+            <div class="text-center" style="margin-bottom: 20px;">
+                <img src="pfp.png" alt="Profile Picture" class="rounded-circle" style="width: 150px; height: 150px;">  
+            </div>
+            <div class="text-center">
+                <h4>{{data.name}}</h4>
+                <p>Email:{{data.email}}</p>
+                <p>Phone:{{data.phone}}</p>
+                <p>Location:{{data.place}}</p>
+            </div>
+            <div class="text-center" style="margin-top: 20px;">
+                <a href="{% url 'editprofile' %}" class="btn" style="background-color:#F28123 ;">Edit Profile</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

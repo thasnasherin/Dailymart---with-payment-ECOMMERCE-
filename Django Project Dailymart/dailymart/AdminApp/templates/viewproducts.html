@@ -1,0 +1,41 @@
+{% extends 'adminindex.html' %}
+{% block contents %}
+<div class="card">
+    <div class="card-header">
+        <h2 class="text-center">Products</h2>
+      <div class="card-tools">
+        </div>
+      </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body table-responsive p-0">
+      <table class="table table-hover text-nowrap">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Product Image</th>
+            <th>Product Name</th>
+            <th>Product Description</th>
+            <th>Product Price</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for i in data %}
+          <tr>
+            <td>{{i.id}}</td>
+            <td><img src="{{i.product_image.url}}" alt="" width="70px" height="70px"></td>
+            <td>{{i.product_name}}</td>
+            <td>{{i.product_desc|truncatechars:10}}</td>
+            <td>{{i.product_price}}</td>
+            <td><a href="{% url 'delproducts' id=i.id %}" class="btn btn-danger" >Delete</a></td>
+            <td><a href="{% url 'editproducts' id=i.id %}" class="btn btn-primary" >Edit</a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <!-- /.card-body -->
+  </div>
+  {% endblock %}

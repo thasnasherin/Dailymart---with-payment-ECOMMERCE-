@@ -1,0 +1,48 @@
+{% extends 'userindex.html' %}
+{% block contents %}
+<br><br><br><br><br>
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header  text-white text-center">
+            <h2 style="color:  #F28123;">Order Successful!</h2>
+        </div>
+        <div class="card-body">
+            <div class="alert alert-success text-center" role="alert">
+                Thank you <b>{{request.session.user_name}}</b> for your purchase! Your order has been successfully placed.
+            </div>
+            <h4 class="text-center">Order Details</h4>
+            <table class="table table-bordered mt-4">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Order Number</th>
+                        <th scope="col">Product image</th>
+                        <th scope="col">Product</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Price</th>
+                    </tr>
+                </thead>
+                
+
+                <tbody>
+                    {% for i in data %}
+                    <tr>
+                        <td>{{i.id}}</td>
+                        <td><img src="{{i.usercart.userpro.product_image.url}}" alt="" srcset="" height="50" width="50"></td>
+                        <td>{{i.usercart.userpro.product_name}}</td>
+                        <td>{{i.usercart.quantity}}</td>
+                        <td>{{i.usercart.total}}</td>
+                    </tr>
+                    {% endfor %}
+                
+                </tbody>
+            </table>
+            <div class="text-center mt-4">
+                <a href="{% url 'products' %}" class="btn " style="background-color: #F28123;">Continue Shopping</a>
+                <!-- <a href="order-history.html" class="btn btn-secondary">View Order History</a> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

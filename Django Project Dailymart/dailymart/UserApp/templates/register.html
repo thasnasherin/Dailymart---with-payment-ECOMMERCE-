@@ -1,0 +1,52 @@
+{% extends 'userindex.html' %}
+{% block contents %}
+<div class="breadcrumb-section" style="background-color: #051922;" >
+    <div class="container" >
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="breadcrumb-text">
+                    <h1>Register</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form action="{% url 'userreg' %}" method="POST">
+                {% csrf_token %}
+                <div class="card">
+                    <div class="card-header text-center  text-white" style="font-size: 24px; background-color: #F28123;">
+                        Registration Form
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Enter your name" required name="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter your email" requiredb name="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="number">Phone Number</label>
+                            <input type="tel" class="form-control" id="number" placeholder="Enter your phone number" required name="number">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" placeholder="Enter your password" required name="password">
+                        </div>
+                        <div class="form-group">
+                            <label for="place">Place</label>
+                            <input type="text" class="form-control" id="place" placeholder="Enter your place" required name="place">
+                        </div>
+                        <button type="submit" class="btn  btn-block" style="background-color: #F28123;">Register</button>
+                    </div>
+                </div>
+            </form><br><br><br>
+        </div>
+    </div>
+</div>
+{% endblock %}

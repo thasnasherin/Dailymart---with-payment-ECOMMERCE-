@@ -1,0 +1,39 @@
+{% extends 'adminindex.html' %}
+{% block contents %}
+<div class="card">
+    <div class="card-header">
+        <h2 class="text-center">Categories</h2>
+      <div class="card-tools">
+        </div>
+      </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body table-responsive p-0">
+      <table class="table table-hover text-nowrap">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Image</th>
+            <th>Category Name</th>
+            <th>category Description</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for i in data %}
+          <tr>
+            <td>{{i.id}}</td>
+            <td><img src="{{i.category_image.url}}" alt="" width="70px" height="70px"></td>
+            <td>{{i.category_name}}</td>
+            <td>{{i.category_desc|truncatechars:10}}</td>
+            <td><a href="{% url 'delcat' id=i.id %}" class="btn btn-danger" >Delete</a></td>
+            <td><a href="{% url 'editcat' id=i.id %}" class="btn btn-primary" >Edit</a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <!-- /.card-body -->
+  </div>
+{% endblock %}

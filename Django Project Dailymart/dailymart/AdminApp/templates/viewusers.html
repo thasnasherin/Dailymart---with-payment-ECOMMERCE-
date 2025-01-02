@@ -1,0 +1,111 @@
+{% extends 'adminindex.html' %}
+{% block contents %}
+<div class="card">
+    <div class="card-header">
+        <h2 class="text-center">New Requests</h2>
+      <div class="card-tools"></div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body table-responsive p-0">
+      <table class="table table-hover text-nowrap">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>User Name</th>
+            <th>User Number</th>
+            <th>User Place</th>
+            <th>User Email</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for i in data %}
+          <tr>
+            <td>{{i.id}}</td>
+            <td>{{i.name}}</td>
+            <td>{{i.phone}}</td>
+            <td>{{i.place}}</td>
+            <td>{{i.email}}</td>
+            <td><a href="{% url 'reject' id=i.id %}" class="btn btn-danger" >Decline</a></td>
+            <td><a href="{% url 'accept' id=i.id %}" class="btn btn-primary" >Accept</a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <!-- /.card-body -->
+  </div>
+<div class="card">
+    <div class="card-header">
+        <h2 class="text-center">Accepted users</h2>
+      <div class="card-tools">
+      </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body table-responsive p-0">
+      <table class="table table-hover text-nowrap">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>User Name</th>
+            <th>User Number</th>
+            <th>User Place</th>
+            <th>User Email</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for i in data1 %}
+          <tr>
+            <td>{{i.id}}</td>
+            <td>{{i.name}}</td>
+            <td>{{i.phone}}</td>
+            <td>{{i.place}}</td>
+            <td>{{i.email}}</td>
+            <td><a href="{% url 'reject' id=i.id %}" class="btn btn-danger" >Decline</a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <!-- /.card-body -->
+  </div>
+<div class="card">
+    <div class="card-header">
+        <h2 class="text-center">Rejected users</h2>
+      <div class="card-tools">
+      </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body table-responsive p-0">
+      <table class="table table-hover text-nowrap">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>User Name</th>
+            <th>User Number</th>
+            <th>User Place</th>
+            <th>User Email</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for i in data2 %}
+          <tr>
+            <td>{{i.id}}</td>
+            <td>{{i.name}}</td>
+            <td>{{i.phone}}</td>
+            <td>{{i.place}}</td>
+            <td>{{i.email}}</td>
+            <td></td>
+            <td><a href="{% url 'accept' id=i.id %}" class="btn btn-primary" >Accept</a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <!-- /.card-body -->
+  </div>
+{% endblock %}

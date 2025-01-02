@@ -1,0 +1,68 @@
+{% extends 'userindex.html' %}
+{% block contents %}
+<div class="breadcrumb-section" style="background-color: #051922;" >
+    <div class="container" >
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="breadcrumb-text">
+                    <h1>Single Details</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br><br>
+<div class="container">
+<div class="row">
+    {% for i in product %}
+    <div class="col-md-5">
+        <div class="single-product-img">
+            <img src="{{i.product_image.url}}" alt="">
+        </div>
+    </div>
+    <div class="col-md-7">
+    <form action="{% url 'addtocart' id=i.id %}" method="POST">
+    {% csrf_token %}        
+    <div class="single-product-content">
+            <h3>{{i.product_name}}</h3>
+            <p class="single-product-pricing">{{i.product_price}} Rs</p>
+            <p>{{i.product_desc}}
+            <div class="single-product-form">
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">Quantity</label>
+                      <input type="number" class="form-control" name="quantity" id="quantity"  value="1" min="1" max="100">
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputPassword1" class="form-label">Total</label>
+                      <input type="number" class="form-control" name="total" id="total" value="{{i.product_price}}" style="width: 12rem;" readonly>
+                    </div>
+                    <div class="mb-3">
+                      <input type="hidden" class="form-control" name="" id="price" hidden value="{{i.product_price}}"  >
+                    </div>
+                <button type="submit" class="btn" style="background-color: #F28123;"><i class="fas fa-shopping-cart"></i> Add to Cart</a></button>
+                </form>
+                <p><strong>Categories: </strong>{{i.product_category}}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function()
+        {
+            $('#quantity').on('change', function(){
+                var quantity=$('#quantity').val();
+                var price=$('#price').val();
+                var total=parseInt(quantity)*parseInt(price);
+                $('#total').val(total);
+            })
+        })
+    </script>                                                                               
+{% endblock %}

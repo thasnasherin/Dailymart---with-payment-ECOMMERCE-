@@ -1,0 +1,35 @@
+{% extends 'userindex.html' %}
+{% block contents %}
+<div class="breadcrumb-section" style="background-color: #051922;" >
+    <div class="container" >
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="breadcrumb-text">
+                    <h1>Products</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+      <br>
+
+        <div class="row">
+            {%  for i in products %}
+           
+            <div class="col-lg-4 col-md-6 text-center">
+                <div class="single-product-item" style="height: 33rem;">
+                    <div class="product-image">
+                        <a href=""><img src="{{i.product_image}}" alt="" style="height: 15rem;"></a>
+                    </div>
+                    <h3>{{i.product_name}}</h3>
+                    <p class="product-price"><span></span>{{i.product_price}} Rs</p>
+                    
+                    <a href="{% url 'singledetails' id=i.id %}" class="cart-btn"><i class="fas fa-shopping-cart"></i>View Details</a>
+              
+                 
+                   
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+{% endblock %}
