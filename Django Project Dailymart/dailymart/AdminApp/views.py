@@ -33,9 +33,10 @@ def addpro(request):
         pro_name = request.POST.get('product_name')
         pro_desc = request.POST.get('product_desc')
         pro_price = request.POST.get('product_price')
+        pro_stock = request.POST.get('product_stock')
         pro_img = request.FILES.get('product_image')
         pro_cat = request.POST.get('product_cat')
-        data = Products(product_name = pro_name, product_desc = pro_desc, product_price = pro_price,product_image=pro_img,product_category=pro_cat)
+        data = Products(product_name = pro_name, product_desc = pro_desc, product_price = pro_price,product_stock=pro_stock,product_image=pro_img,product_category=pro_cat)
         print(pro_cat)
         data.save()
     return redirect('viewproducts')
@@ -70,14 +71,15 @@ def updateproduct(request,id):
         pro_name = request.POST.get('product_name')
         pro_desc = request.POST.get('product_desc')
         pro_price = request.POST.get('product_price')
+        pro_stock = request.POST.get('product_stock')
         pro_category = request.POST.get('product_cat')
         try:
-            pro_img = request.FILES.get('product_image')
+            pro_img = request.FILES['product_image']
             fs = FileSystemStorage()
             pro_img = fs.save(pro_img.name,pro_img)
         except MultiValueDictKeyError:
             pro_img = Products.objects.get(id=id).product_image
-        Products.objects.filter(id=id).update(product_name = pro_name, product_price = pro_price, product_desc = pro_desc,product_category = pro_category,product_image = pro_img)
+        Products.objects.filter(id=id).update(product_name = pro_name, product_price = pro_price,product_stock=pro_stock, product_desc = pro_desc,product_category = pro_category,product_image = pro_img)
     return redirect('viewproducts')
 
 def updatecat(request,id):

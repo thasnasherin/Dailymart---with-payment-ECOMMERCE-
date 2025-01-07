@@ -31,7 +31,7 @@
             <div class="single-product-form">
                     <div class="mb-3">
                       <label for="exampleInputEmail1" class="form-label">Quantity</label>
-                      <input type="number" class="form-control" name="quantity" id="quantity"  value="1" min="1" max="100">
+                      <input type="number" class="form-control" name="quantity" id="quantity"  value="1" min="1" max="{{i.product_stock}}">
                     </div>
                     <div class="mb-3">
                       <label for="exampleInputPassword1" class="form-label">Total</label>
@@ -40,9 +40,14 @@
                     <div class="mb-3">
                       <input type="hidden" class="form-control" name="" id="price" hidden value="{{i.product_price}}"  >
                     </div>
+                {% if i.product_stock == 0 %}
+                <h4 style="color: red;">Out of Stock</h4>
+                {% else %}
                 <button type="submit" class="btn" style="background-color: #F28123;"><i class="fas fa-shopping-cart"></i> Add to Cart</a></button>
-                </form>
+                {% endif %}    
+            </form>
                 <p><strong>Categories: </strong>{{i.product_category}}</p>
+                <p><strong>Stocks: </strong>{{i.product_stock}}</p>
             </div>
         </div>
     </div>

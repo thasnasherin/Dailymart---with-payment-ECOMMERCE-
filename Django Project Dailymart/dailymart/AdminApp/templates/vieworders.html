@@ -27,7 +27,7 @@
         <tbody>
           {% for i in data %}
           <tr>
-            <td>{{i.id}}</td>
+            <td>{{forloop.counter}}</td>
             <td>{{i.usercart.usercart.name}}</td>
             <td>{{i.usercart.usercart.phone}}</td>
             <td>{{i.usercart.usercart.place}}</td>

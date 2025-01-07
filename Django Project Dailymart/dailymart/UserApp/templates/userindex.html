@@ -65,7 +65,7 @@
 								<li ><a href="{% url 'userindex' %}">Home</a></li>
 								<li ><a href="{% url 'about' %}">About</a></li>
 								<li ><a href="{% url 'categories' %}">Categories</a></li>
-								<li ><a href="{% url 'products' %}">Products</a></li>
+								<li ><a href="{% url 'products' cat='all' %}">Products</a></li>
 								<li ><a href="{% url 'contact' %}">Contact</a></li>
 								<li ><a href="{% url 'logout' %}">Logout</a></li>
 								<div class="header-icons">
@@ -128,7 +128,7 @@
 								<h1></h1>
 								<div class="hero-btns">
 									{% if 'user_id' in request.session %}
-									<a href="{% url 'products' %}" class="boxed-btn">Products</a>
+									<a href="{% url 'products' cat='all' %}" class="boxed-btn">Products</a>
 									<a href="{% url 'contact' %}" class="bordered-btn">Contact Us</a>
 									{% else %}
 									<a href="{% url 'login' %}" class="boxed-btn">Products</a>
@@ -152,7 +152,7 @@
 								<h1>100% Organic Collection</h1>
 								<div class="hero-btns">
 									{% if 'user_id' in request.session %}
-									<a href="{% url 'products' %}" class="boxed-btn">Products</a>
+									<a href="{% url 'products' cat='all' %}" class="boxed-btn">Products</a>
 									<a href="{% url 'contact' %}" class="bordered-btn">Contact Us</a>
 									{% else %}
 									<a href="{% url 'login' %}" class="boxed-btn">Products</a>
@@ -176,7 +176,7 @@
 								<h1>Get  Discount</h1>
 								<div class="hero-btns">
 									{% if 'user_id' in request.session %}
-									<a href="{% url 'products' %}" class="boxed-btn">Products</a>
+									<a href="{% url 'products' cat='all' %}" class="boxed-btn">Products</a>
 									<a href="{% url 'contact' %}" class="bordered-btn">Contact Us</a>
 									{% else %}
 									<a href="{% url 'login' %}" class="boxed-btn">Products</a>
@@ -289,7 +289,7 @@
 						<h3>{{i.product_name}}</h3>
 						<p class="product-price"><span>Per Kg</span>{{i.product_price}}$</p>
 						{% if 'user_id' in request.session %}
-						<a href="{% url 'products' %}" class="cart-btn"><i class=""></i>View more</a>
+						<a href="{% url 'products' cat='all' %}" class="cart-btn"><i class=""></i>View more</a>
 						{% else %}
 						<a href="{% url 'login' %}" class="cart-btn"><i class=""></i>View more</a>
 						{% endif %}
@@ -325,7 +325,7 @@
                     <h4>Hikan Strwaberry</h4>
                     <!--Countdown Timer-->
                     <div class="time-counter"><div class="time-countdown clearfix" data-countdown="2020/2/01"><div class="counter-column"><div class="inner"><span class="count">00</span>Days</div></div> <div class="counter-column"><div class="inner"><span class="count">00</span>Hours</div></div>  <div class="counter-column"><div class="inner"><span class="count">00</span>Mins</div></div>  <div class="counter-column"><div class="inner"><span class="count">00</span>Secs</div></div></div></div>
-                	<a href="cart.html" class="cart-btn mt-3"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+                	<a href="#" class="cart-btn mt-3"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -333,58 +333,7 @@
     <!-- end cart banner section -->
 
 	<!-- testimonail-section -->
-	<div class="testimonail-section mt-150 mb-150">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-10 offset-lg-1 text-center">
-					<div class="testimonial-sliders">
-						<div class="single-testimonial-slider">
-							<div class="client-avater">
-								<img src="{% static 'assets/img/avaters/avatar1.png' %}" alt="">
-							</div>
-							<div class="client-meta">
-								<h3>Saira Hakim <span>Local shop owner</span></h3>
-								<p class="testimonial-body">
-									" Sed ut perspiciatis unde omnis iste natus error veritatis et  quasi architecto beatae vitae dict eaque ipsa quae ab illo inventore Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium "
-								</p>
-								<div class="last-icon">
-									<i class="fas fa-quote-right"></i>
-								</div>
-							</div>
-						</div>
-						<div class="single-testimonial-slider">
-							<div class="client-avater">
-								<img src="{% static 'assets/img/avaters/avatar2.png' %}" alt="">
-							</div>
-							<div class="client-meta">
-								<h3>David Niph <span>Local shop owner</span></h3>
-								<p class="testimonial-body">
-									" Sed ut perspiciatis unde omnis iste natus error veritatis et  quasi architecto beatae vitae dict eaque ipsa quae ab illo inventore Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium "
-								</p>
-								<div class="last-icon">
-									<i class="fas fa-quote-right"></i>
-								</div>
-							</div>
-						</div>
-						<div class="single-testimonial-slider">
-							<div class="client-avater">
-								<img src="{% static 'assets/img/avaters/avatar3.png' %}" alt="">
-							</div>
-							<div class="client-meta">
-								<h3>Jacob Sikim <span>Local shop owner</span></h3>
-								<p class="testimonial-body">
-									" Sed ut perspiciatis unde omnis iste natus error veritatis et  quasi architecto beatae vitae dict eaque ipsa quae ab illo inventore Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium "
-								</p>
-								<div class="last-icon">
-									<i class="fas fa-quote-right"></i>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	
 	<!-- end testimonail-section -->
 	
 	<!-- advertisement section -->
@@ -393,16 +342,16 @@
 			<div class="row">
 				<div class="col-lg-6 col-md-12">
 					<div class="abt-bg">
-						<a href="https://www.youtube.com/watch?v=DBLlFWYcIGQ" class="video-play-btn popup-youtube"><i class="fas fa-play"></i></a>
+						<a href="" class="video-play-btn popup-youtube"><i class="fas fa-play"></i></a>
 					</div>
 				</div>
 				<div class="col-lg-6 col-md-12">
 					<div class="abt-text">
-						<p class="top-sub">Since Year 1999</p>
+						<p class="top-sub">Overview</p>
 						<h2><span class="orange-text">Daily Mart</span></h2>
-						<p>Etiam vulputate ut augue vel sodales. In sollicitudin neque et massa porttitor vestibulum ac vel nisi. Vestibulum placerat eget dolor sit amet posuere. In ut dolor aliquet, aliquet sapien sed, interdum velit. Nam eu molestie lorem.</p>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente facilis illo repellat veritatis minus, et labore minima mollitia qui ducimus.</p>
-						<a href="about.html" class="boxed-btn mt-4">know more</a>
+						<p>At DailyMart, we understand the fast-paced world you live in. Whether you're a busy professional, a homemaker, or a student, our platform is designed to cater to your lifestyle.</p>
+						<p>From groceries and fresh produce to electronics, fashion, home essentials, and more, we’ve got you covered with a wide range of products from trusted brands and local vendors.</p>
+						<a href="{% url 'about' %}" class="boxed-btn mt-4">know more</a>
 					</div>
 				</div>
 			</div>
@@ -459,16 +408,16 @@
 				<div class="col-lg-3 col-md-6">
 					<div class="footer-box about-widget">
 						<h2 class="widget-title">About us</h2>
-						<p>Ut enim ad minim veniam perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.</p>
+						<p>Shop anytime, anywhere with our user-friendly website and mobile app. Avoid long queues, heavy bags, and the hassle of traffic by shopping from the comfort of your home.</p>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6">
 					<div class="footer-box get-in-touch">
 						<h2 class="widget-title">Get in Touch</h2>
 						<ul>
-							<li>34/8, East Hukupara, Gifirtok, Sadan.</li>
-							<li>support@fruitkha.com</li>
-							<li>+00 111 222 3333</li>
+							<li>Thasna Sherin Ak.</li>
+							<li><a href="mailto:thasasherin@gmail.com">thasasherin@gmail.com</a></li>
+							<li>9544398326</li>
 						</ul>
 					</div>
 				</div>
@@ -479,7 +428,7 @@
 							<li ><a href="{% url 'userindex' %}">Home</a></li>
 							<li ><a href="{% url 'about' %}">About</a></li>
 							<li ><a href="{% url 'categories' %}">Categories</a></li>
-							<li ><a href="{% url 'products' %}">Products</a></li>
+							<li ><a href="{% url 'products' cat='all' %}">Products</a></li>
 							<li ><a href="{% url 'contact' %}">Contact</a></li>
 						</ul>
 					</div>
@@ -488,7 +437,7 @@
 					<div class="footer-box subscribe">
 						<h2 class="widget-title">Subscribe</h2>
 						<p>Subscribe to our mailing list to get the latest updates.</p>
-						<form action="index.html">
+						<form action="mailto:thasasherin@gmail.com">
 							<input type="email" placeholder="Email">
 							<button type="submit"><i class="fas fa-paper-plane"></i></button>
 						</form>

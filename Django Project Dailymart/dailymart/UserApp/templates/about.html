@@ -73,6 +73,47 @@
         </div>
     </div>
 </div>
+
+<div class="" style="margin-left: 400px;">
+    <div class="container">
+        <br><br><br>
+        <div class="row">
+            <div class="col-lg-10">
+                <div class="featured-text">
+                    <h2 class="pb-3">Our Mission <span class="orange-text">& Vision</span></h2>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 mb-4 mb-md-5">
+                            <div class="list-box d-flex">
+                                <div class="">
+                                    <i class=""></i>
+                                </div>
+                                <div class="content">
+                                    <h3>Our Mission</h3>
+                                    <p><i>At DailyMart, our mission is to simplify everyday shopping by combining technology, innovation, and customer-centricity. We aim to build a platform that not only meets your needs but exceeds your expectations.</i></p>
+                                    <!-- <p>sit voluptatem accusantium dolore mque laudantium, totam rem aperiam, eaque ipsa quae ab illo.</p> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 mb-5 mb-md-5">
+                            <div class="list-box d-flex">
+                                <div class="">
+                                    <i class=""></i>
+                                </div>
+                                <div class="content">
+                                    <h3>Our Mission</h3>
+                                    <p><i>We envision a world where shopping is effortless and enjoyable for everyone. By leveraging the power of e-commerce, we aspire to empower communities, support local businesses, and contribute to a sustainable future.</i></p>
+                                    <!-- <p>sit voluptatem accusantium dolore mque laudantium, totam rem aperiam, eaque ipsa quae ab illo.</p> -->
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><br><br><br><br>
+
 <!-- end featured section -->
 
 <!-- shop banner -->
@@ -80,59 +121,13 @@
     <div class="container">
         <h3>Sale is on! <br> with big <span class="orange-text">Discount...</span></h3>
         <div class="sale-percent"><span>Sale! <br> Upto</span>50% <span>off</span></div>
-        <a href="shop.html" class="cart-btn btn-lg">Shop Now</a>
+        <a href="{% url 'products' cat='all' %}" class="cart-btn btn-lg">Shop Now</a>
     </div>
-</section>
+</section><br><br>
 <!-- end shop banner -->
 
 <!-- team section -->
-<div class="mt-150">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 offset-lg-2 text-center">
-                <div class="section-title">
-                    <h3>Our <span class="orange-text">Team</span></h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, fuga quas itaque eveniet beatae optio.</p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-4 col-md-6">
-                <div class="single-team-item">
-                    <div class="team-bg team-bg-1"></div>
-                    <h4>Jimmy Doe <span>Farmer</span></h4>
-                    <ul class="social-link-team">
-                        <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
-                        <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="single-team-item">
-                    <div class="team-bg team-bg-2"></div>
-                    <h4>Marry Doe <span>Farmer</span></h4>
-                    <ul class="social-link-team">
-                        <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
-                        <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0">
-                <div class="single-team-item">
-                    <div class="team-bg team-bg-3"></div>
-                    <h4>Simon Joe <span>Farmer</span></h4>
-                    <ul class="social-link-team">
-                        <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
-                        <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
 <!-- end team section -->
 
 <!-- testimonail-section -->
@@ -140,15 +135,16 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-10 offset-lg-1 text-center">
+                <center><h2 class="pb-3">What We <span class="orange-text">are Do</span></h2></center>
                 <div class="testimonial-sliders">
                     <div class="single-testimonial-slider">
                         <div class="client-avater">
-                            <img src="{% static 'assets/img/avaters/avatar1.png' %}" alt="">
+                            <img src="{% static 'assets/img/CONVIENIENCE.jpeg' %}" alt="">
                         </div>
                         <div class="client-meta">
-                            <h3>Saira Hakim <span>Local shop owner</span></h3>
+                            <h3> <span>Convenience</span></h3>
                             <p class="testimonial-body">
-                                " Sed ut perspiciatis unde omnis iste natus error veritatis et  quasi architecto beatae vitae dict eaque ipsa quae ab illo inventore Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium "
+                                " Shop anytime, anywhere with our user-friendly website and mobile app. Avoid long queues, heavy bags, and the hassle of traffic by shopping from the comfort of your home. "
                             </p>
                             <div class="last-icon">
                                 <i class="fas fa-quote-right"></i>
@@ -157,12 +153,12 @@
                     </div>
                     <div class="single-testimonial-slider">
                         <div class="client-avater">
-                            <img src="{% static 'assets/img/avaters/avatar2.png' %}" alt="">
+                            <img src="{% static 'assets/img/QUALITY U CAN TRUST.png' %}" alt="">
                         </div>
                         <div class="client-meta">
-                            <h3>David Niph <span>Local shop owner</span></h3>
+                            <h3> <span>Quality You Can Trust</span></h3>
                             <p class="testimonial-body">
-                                " Sed ut perspiciatis unde omnis iste natus error veritatis et  quasi architecto beatae vitae dict eaque ipsa quae ab illo inventore Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium "
+                                " We partner with reliable suppliers to ensure that every product meets the highest standards of quality. From farm-fresh fruits and vegetables to top-notch electronics, we deliver only the best to our customers. "
                             </p>
                             <div class="last-icon">
                                 <i class="fas fa-quote-right"></i>
@@ -171,12 +167,12 @@
                     </div>
                     <div class="single-testimonial-slider">
                         <div class="client-avater">
-                            <img src="{% static 'assets/img/avaters/avatar3.png' %}" alt="">
+                            <img src="{% static 'assets/img/Affordable Prices.png' %}" alt="">
                         </div>
                         <div class="client-meta">
-                            <h3>Jacob Sikim <span>Local shop owner</span></h3>
+                            <h3> <span>Affordable Prices</span></h3>
                             <p class="testimonial-body">
-                                " Sed ut perspiciatis unde omnis iste natus error veritatis et  quasi architecto beatae vitae dict eaque ipsa quae ab illo inventore Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium "
+                                " At DailyMart, we believe in value for money. Enjoy competitive prices, exclusive deals, and regular discounts across all categories. Our commitment is to make quality products accessible to everyone. "
                             </p>
                             <div class="last-icon">
                                 <i class="fas fa-quote-right"></i>

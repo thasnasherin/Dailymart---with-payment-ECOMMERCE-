@@ -8,6 +8,7 @@ class Category(models.Model):
 class Products(models.Model):
     product_name = models.CharField(max_length=20,default='null')
     product_price = models.IntegerField(default=0)
+    product_stock = models.IntegerField(default=0)
     product_desc = models.TextField(default='null')
     product_image = models.ImageField(default='null',upload_to='pics')
     product_category = models.CharField(max_length=20,default='null')

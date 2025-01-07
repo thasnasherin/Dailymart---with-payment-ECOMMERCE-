@@ -23,7 +23,7 @@
         <tbody>
             {% for i in data %}
           <tr>
-            <td>{{i.id}}</td>
+            <td>{{forloop.counter}}</td>
             <td><img src="{{i.category_image.url}}" alt="" width="70px" height="70px"></td>
             <td>{{i.category_name}}</td>
             <td>{{i.category_desc|truncatechars:10}}</td>

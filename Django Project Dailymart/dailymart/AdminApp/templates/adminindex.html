@@ -91,7 +91,7 @@
           <img src="{% static 'dist/img/user2-160x160.jpg' %}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Admin</a>
+          <a href="#" class="d-block">Thasna Sherin AK</a>
         </div>
       </div>
 
@@ -211,7 +211,7 @@
             <div class="info-box mb-3" style="width: 11rem;">
 
               <div class="info-box-content">
-                <i class="fas fa-folder text-center text-primary"></i>
+                <a href="{% url 'viewcategory' %}"><i class="fas fa-folder text-center text-primary"></i></a>
                 <span class="info-box-text ">Categories</span>
                 <span class="info-box-number">{{category}}</span>
               </div>
@@ -224,7 +224,7 @@
             <div class="info-box mb-3" style="width: 11rem;">
 
               <div class="info-box-content">
-                <i class="fas fa-box text-center text-primary "></i>
+                <a href="{% url 'viewproducts' %}"><i class="fas fa-box text-center text-primary "></i></a>
                 <span class="info-box-text">Products</span>
                 <span class="info-box-number">{{products}}</span>
               </div>
@@ -241,7 +241,7 @@
             <div class="info-box mb-3" style="width: 11rem;">
 
               <div class="info-box-content">
-                <i class="fas fa-envelope text-center text-primary"></i>
+                <a href="{% url 'viewcontact' %}"><i class="fas fa-envelope text-center text-primary"></i></a>
                 <span class="info-box-text">Messages</span>
                 <span class="info-box-number">{{messages}}</span>
               </div>
@@ -254,7 +254,7 @@
             <div class="info-box mb-3" style="width: 11rem;">
 
               <div class="info-box-content">
-                <i class="fas fa-user text-center text-primary"></i>
+                <a href="{% url 'viewuser' %}"><i class="fas fa-user text-center text-primary"></i></a>
                 <span class="info-box-text">New Members</span>
                 <span class="info-box-number">{{users}}</span>
               </div>
@@ -266,7 +266,7 @@
             <div class="info-box mb-3" style="width: 11rem;">
 
               <div class="info-box-content">
-                <i class="fas fa-shopping-cart text-center text-primary"></i>
+                <a href="{% url 'vieworders' %}"><i class="fas fa-shopping-cart text-center text-primary"></i></a>
                 <span class="info-box-text ">Orders</span>
                 <span class="info-box-number">{{orders}}</span>
               </div>
@@ -294,7 +294,7 @@
 
   <!-- Main Footer -->
   <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+    <strong>Copyright &copy; 2014-2021 <a href="#">THASNA SHERIN AK</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
       <b>Version</b> 3.2.0-rc

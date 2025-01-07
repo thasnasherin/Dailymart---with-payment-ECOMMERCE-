@@ -20,12 +20,21 @@ def about(request):
     return render(request,'about.html')
 def contact(request):
     return render(request,'contact.html')
-def products(request):
-    products = Products.objects.all()
-    return render(request,'products.html',{'products':products})
+def products(request,cat):
+    if 'user_id' in request.session:
+       if cat=='all':
+          products = Products.objects.all()
+       else:
+           products=Products.objects.filter(product_category=cat)
+       return render(request,'products.html',{'products':products})
+    return render(request,'login.html',{'msg1':"You want to Login"})
+
 def categories(request):
-    category = Category.objects.all()
-    return render(request,'categories.html',{'category':category})
+    if 'user_id' in request.session:
+       category = Category.objects.all()
+       return render(request,'categories.html',{'category':category})
+    return render(request,'login.html',{'msg1':"You want to Login"})
+
 def userlogin(request):
     return render(request,'login.html')
 def userreg(request):
@@ -71,27 +80,45 @@ def message(request):
         data.save()
     return redirect('userindex')
 def singledetails(request,id):
-    product = Products.objects.filter(id = id)
-    return render(request,'singledetails.html',{'product':product})
+    if 'user_id' in request.session:
+       product = Products.objects.filter(id = id)
+       return render(request,'singledetails.html',{'product':product})
+    return render(request,'login.html',{'msg1':"You want to Login"})
+
 def cart(request):
-    u_id = request.session.get('user_id')
-    data = Cart.objects.filter(usercart = u_id,status = 0)
-    a = Cart.objects.filter(usercart = u_id,status = 0).aggregate(Sum('total'))
-    return render(request,'cart.html',{'data':data,'a':a})
+    if 'user_id' in request.session:
+       u_id = request.session.get('user_id')
+       data = Cart.objects.filter(usercart = u_id,status = 0)
+       a = Cart.objects.filter(usercart = u_id,status = 0).aggregate(Sum('total'))
+       return render(request,'cart.html',{'data':data,'a':a})
+    return render(request,'login.html',{'msg1':"You want to Login"})
+
 def checkout(request):
-    u_id = request.session.get('user_id')
-    data = Cart.objects.filter(usercart = u_id,status = 0)
-    a = Cart.objects.filter(usercart = u_id,status = 0).aggregate(Sum('total'))
-    return render(request,'checkout.html',{'data':data,'a':a})
+    if 'user_id' in request.session:
+       u_id = request.session.get('user_id')
+       data = Cart.objects.filter(usercart = u_id,status = 0)
+       a = Cart.objects.filter(usercart = u_id,status = 0).aggregate(Sum('total'))
+       return render(request,'checkout.html',{'data':data,'a':a})
+    return render(request,'login.html',{'msg1':"You want to Login"})
+
 
 def payment(request):
-    return render(request,'payment.html')
+    if 'user_id' in request.session:
+       return render(request,'payment.html')
+    return render(request,'login.html',{'msg1':"You want to Login"})
+
 
 def paymentsuccess(request):
-    return render(request,'paymentsuccess.html')
+    if 'user_id' in request.session:
+       return render(request,'paymentsuccess.html')
+    return render(request,'login.html',{'msg1':"You want to Login"})
+
 
 def error(request):
-    return render(request,'error.html')
+    if 'user_id' in request.session:
+       return render(request,'error.html')
+    return render(request,'login.html',{'msg1':"You want to Login"})
+
 
 #----------------------------------------------------------------------------------------------------------------
 #PAYPAL PAYMENT GATEWAY
@@ -307,7 +334,12 @@ def addtocart(request,id):
         # print(quantity)
         data = Cart(usercart = Register.objects.get(id=user_id),userpro = Products.objects.get(id=id),quantity = quantity,total = total)
         data.save()
-    return redirect('cart')
+        product = data.userpro
+        if product.product_stock > 0:  # Ensure stock is available
+            product.product_stock -= int(quantity)
+            product.save()
+        return redirect('cart')
+    
 def removepro(request,id):
     data = Cart.objects.filter(id=id).delete()
     return redirect('cart')
@@ -326,22 +358,34 @@ def checkoutdata(request):
             Cart.objects.filter(id=i.id).update(status=1)
         return redirect('create_payment')
 def sucess(request):
-    user_id = request.session.get('user_id')
-    data = Checkout.objects.filter(usercheckout = user_id)
-    return render(request,'sucess.html',{'data':data})
+    if 'user_id' in request.session:
+       user_id = request.session.get('user_id')
+       data = Checkout.objects.filter(usercheckout = user_id)
+       return render(request,'sucess.html',{'data':data})
+    return render(request,'login.html',{'msg1':"You want to Login"})
+
 
 def viewcatpro(request,category):
-    category_name = Category.objects.filter(category_name = category)
-    data = Products.objects.filter(product_category = category)
-    return render(request,'singlecat.html',{'data':data,'category_name':category_name})
+    if 'user_id' in request.session:
+       category_name = Category.objects.filter(category_name = category)
+       data = Products.objects.filter(product_category = category)
+       return render(request,'singlecat.html',{'data':data,'category_name':category_name})
+    return render(request,'login.html',{'msg1':"You want to Login"})
+
 def profile(request):
-    user_id = request.session.get('user_id')
-    data = Register.objects.get(id = user_id)
-    return render(request,'profile.html',{'data':data})
+    if 'user_id' in request.session:
+       user_id = request.session.get('user_id')
+       data = Register.objects.get(id = user_id)
+       return render(request,'profile.html',{'data':data})
+    return render(request,'login.html',{'msg1':"You want to Login"})
+
 def editprofile(request):
-    user_id = request.session.get('user_id')
-    data = Register.objects.get(id = user_id)
-    return render(request,'editprofile.html',{'data':data})
+    if 'user_id' in request.session:
+       user_id = request.session.get('user_id')
+       data = Register.objects.get(id = user_id)
+       return render(request,'editprofile.html',{'data':data})
+    return render(request,'login.html',{'msg1':"You want to Login"})
+
 def updateprofile(request):
         if request.method == "POST":
             user_id = request.session.get('user_id')

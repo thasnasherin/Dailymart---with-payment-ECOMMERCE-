@@ -22,7 +22,7 @@
         <tbody>
             {% for i in data %}
           <tr>
-            <td>{{i.id}}</td>
+            <td>{{forloop.counter}}</td>
             <td>{{i.name}}</td>
             <td>{{i.phone}}</td>
             <td>{{i.place}}</td>
